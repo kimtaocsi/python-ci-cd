@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-python-dev
+spec:
+  template:
+    metadata:
+      labels:
+        app: hello-python-dev
+    spec:
+      containers:
+      - image: kimtao/project:<BUILD_TAG>
+        imagePullPolicy: IfNotPresent
+        name: hello-python
+        env:
+        - name: branch
+          value: <BRANCH_NAME>
